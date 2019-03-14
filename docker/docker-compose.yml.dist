@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+    php:
+        build: docker/php
+        working_dir: /app
+        env_file:
+            - .env
+        volumes:
+            - PATH_TO_LOCAL_APP:/app
+        networks:
+            default: ~
+
+    nginx:
+        build: docker/nginx
+        depends_on:
+            - php
+        ports:
+            - 80:80
+        volumes:
+            - PATH_TO_LOCAL_APP:/app
+        networks:
+            default: ~
+
+    mysql:
+        build: docker/mysql
+        ports:
+            - 13306:3306
+        volumes:
+            - mysql:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=secret
+        networks:
+            default: ~
+
+volumes:
+    mysql: ~
+
+networks:
+    default: ~

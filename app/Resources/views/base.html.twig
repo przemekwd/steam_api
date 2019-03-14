@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- Icon -->
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- Styles -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('assets/css/material-dashboard.min.css') }}" type="text/css" media="all" />
+        {% block stylesheets %}{% endblock %}
+        <!-- Scripts -->
+        <script type="text/javascript" src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/core/bootstrap-material-design.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/material-dashboard.min.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </head>
+    <body class="dark-edition">
+        <div class="wrapper ">
+            <div class="sidebar" data-color="green" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
+                <div class="logo">
+                    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+                        Creative Tim
+                    </a>
+                </div>
+                <div class="sidebar-wrapper">
+                    <ul class="nav">
+                        <li class="nav-item active  ">
+                            <a class="nav-link" href="./dashboard.html">
+                                <i class="material-icons">dashboard</i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-panel">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
