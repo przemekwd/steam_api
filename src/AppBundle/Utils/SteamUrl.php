@@ -10,6 +10,7 @@ class SteamUrl
 
     const BASE = 'http://api.steampowered.com/';
     const BASE_USER = 'ISteamUser/';
+    const BASE_PLAYER = 'IPlayerService/';
 
     /**
      * @param array $params
@@ -27,6 +28,15 @@ class SteamUrl
     public static final function GetFriendList(array $params = [])
     {
         return self::BASE . self::BASE_USER . __FUNCTION__ . self::VERSION_1 . self::SET_PARAMS . self::arrayToParams($params);
+    }
+
+    /**
+     * @param array $params
+     * @return string
+     */
+    public static final function GetOwnedGames(array $params = [])
+    {
+        return self::BASE . self::BASE_PLAYER . __FUNCTION__ . self::VERSION_1 . self::SET_PARAMS . self::arrayToParams($params);
     }
 
     /**

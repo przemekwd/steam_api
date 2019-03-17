@@ -1,0 +1,23 @@
+<div class="card" id="owned-games">
+    <div class="card-header card-header-success">
+        <h4 class="card-title">{{ 'Owned games'|trans }}</h4>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<script>
+    $.ajax({
+        url: '{{ path('steam_owned_games', {'steamId': steamId}) }}',
+        async: true,
+        beforeSend: function () {
+            $('#owned-games > .card-body').hide();
+            $('#owned-games').append('<div class="loader"></div>');
+        },
+        success: function (response) {
+            $('#owned-games > .card-body').append(response).fadeIn();
+        },
+        complete: function () {
+            $('#owned-games .loader').remove();
+        }
+    });
+</script>

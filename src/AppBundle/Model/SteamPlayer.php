@@ -15,6 +15,16 @@ class SteamPlayer
     const STATE_LOOKING_TO_TRADE = 5;
     const STATE_LOOKING_TO_PLAY = 6;
 
+    const STATE_NAMES = [
+        self::STATE_OFFLINE => 'Offline',
+        self::STATE_ONLINE => 'Online',
+        self::STATE_BUSY =>  'Busy',
+        self::STATE_AWAY => 'Away',
+        self::STATE_SNOOZE => 'Snooze',
+        self::STATE_LOOKING_TO_TRADE =>  'Looking to trade',
+        self::STATE_LOOKING_TO_PLAY => 'looking to play',
+    ];
+
     /**
      * @var string|null
      */

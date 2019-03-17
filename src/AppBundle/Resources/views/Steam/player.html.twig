@@ -11,19 +11,18 @@
                     <div class="col-md-12">
                         <div class="card card-profile">
                             <div class="card-avatar">
-                                <a href="#pablo">
+                                <a href="#">
                                     <img class="img" src="{{ player.avatarFull }}" />
                                 </a>
                             </div>
                             <div class="card-body">
                                 <h6 class="card-category">{{ player.realName }}</h6>
                                 <h4 class="card-title">{{ player.personaName }}</h4>
-                                <p class="card-description">
-                                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                                </p>
-                                <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-12">
+                        {% include '@App/Steam/block/_ownedGames.html.twig' with {'steamId': player.steamId} %}
                     </div>
                 </div>
             </div>

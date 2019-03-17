@@ -2,10 +2,10 @@
 
 namespace AppBundle\Twig\Functions;
 
-use Twig\Extension\AbstractExtension;
+use AppBundle\Twig\BaseFunction;
 use Twig\TwigFunction;
 
-class MaterialIconFunction extends AbstractExtension
+class MaterialIconFunction extends BaseFunction
 {
     /**
      * @return array|\Twig_Filter[]

@@ -8,6 +8,7 @@
 <script>
     $.ajax({
         url: '{{ path('steam_friend_list', {'steamId': steamId}) }}',
+        async: true,
         beforeSend: function () {
             $('#friend-list > .card-body').hide();
             $('#friend-list').append('<div class="loader"></div>');
@@ -16,7 +17,7 @@
             $('#friend-list > .card-body').append(response).fadeIn();
         },
         complete: function () {
-            $('.loader').remove();
+            $('#friend-list .loader').remove();
         }
     });
 </script>

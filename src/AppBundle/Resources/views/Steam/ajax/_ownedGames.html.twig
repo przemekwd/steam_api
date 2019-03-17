@@ -1,0 +1,23 @@
+<h2 class="text-right">{{ 'All'|trans }}: {{ games.gameCount }}</h2>
+
+<div class="row">
+{% for game in games.games %}
+
+    <div class="col-md-6 col-sm-12">
+        <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <img src="{{ media(game.appId, game.imgLogoUrl) }}" alt="{{ game.name }}">
+                </div>
+                <p>{{ game.name }}</p>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    {{ icon('schedule') }} {{ "Times played"|trans }}: {{ timeFormat(game.playtimeForever) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+</div>

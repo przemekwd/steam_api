@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Model\SteamFriend;
 use AppBundle\Serializer\Denormalizer\FriendListDenormalizer;
+use AppBundle\Serializer\Denormalizer\OwnedGamesDenormalizer;
 use AppBundle\Serializer\Denormalizer\PlayerDenormalizer;
 use AppBundle\Serializer\Denormalizer\PlayersDenormalizer;
 use AppBundle\Utils\SteamUrl;
@@ -72,6 +73,28 @@ class SteamController extends BaseController
 
         return $this->render('@App/Steam/ajax/_friendList.html.twig', [
             'list' => $this->serializer->deserialize($data, PlayersDenormalizer::class, 'json'),
+            'all' => count($players),
+        ]);
+    }
+
+    /**
+     * @Route("/owned-games/{steamId}", name="owned_games")
+     *
+     * @param int $steamId
+     * @return Response
+     * @throws Exception
+     */
+    public function playerOwnedGamesAction(int $steamId)
+    {
+        $data = $this->steamConnector->get(SteamUrl::GetOwnedGames([
+            'key' => $this->container->getParameter('steam_key'),
+            'steamid' => $steamId,
+            'include_appinfo' => true,
+            'include_played_free_games' => true,
+        ]));
+
+        return $this->render('@App/Steam/ajax/_ownedGames.html.twig', [
+            'games' => $this->serializer->deserialize($data, OwnedGamesDenormalizer::class, 'json')
         ]);
     }
 }
