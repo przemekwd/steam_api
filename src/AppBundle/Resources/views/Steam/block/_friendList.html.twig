@@ -1,0 +1,22 @@
+<div class="card" id="friend-list">
+    <div class="card-header card-header-success">
+        <h4 class="card-title">{{ 'Friend list'|trans }}</h4>
+    </div>
+    <div class="card-body"></div>
+</div>
+
+<script>
+    $.ajax({
+        url: '{{ path('steam_friend_list', {'steamId': steamId}) }}',
+        beforeSend: function () {
+            $('#friend-list > .card-body').hide();
+            $('#friend-list').append('<div class="loader"></div>');
+        },
+        success: function (response) {
+            $('#friend-list > .card-body').append(response).fadeIn();
+        },
+        complete: function () {
+            $('.loader').remove();
+        }
+    });
+</script>

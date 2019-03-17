@@ -2,12 +2,12 @@
 
 namespace AppBundle\Serializer\Denormalizer;
 
-use AppBundle\Model\SteamPlayer;
+use AppBundle\Model\SteamFriend;
 use AppBundle\Serializer\Denormalizer;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\SerializerAwareInterface;
 
-class PlayersDenormalizer extends Denormalizer implements DenormalizerInterface, SerializerAwareInterface
+class FriendListDenormalizer extends Denormalizer implements DenormalizerInterface, SerializerAwareInterface
 {
     /**
      * @param mixed $data
@@ -18,10 +18,10 @@ class PlayersDenormalizer extends Denormalizer implements DenormalizerInterface,
      */
     public function denormalize($data = [], $class = '', $format = null, array $context = [])
     {
-        $players = array_pop($data['response']);
+        $friends = $data['friendslist']['friends'];
 
-        foreach ($players as $player) {
-            yield $this->serializer->denormalize($player, SteamPlayer::class, 'json');
+        foreach ($friends as $friend) {
+            yield $this->serializer->denormalize($friend, SteamFriend::class, 'json');
         }
 
         return [];

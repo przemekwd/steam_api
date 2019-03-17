@@ -1,0 +1,24 @@
+<h2 class="text-right">{{ 'All:'|trans }} x</h2>
+{% for player in list %}
+
+    {% if player.personaState == constant('AppBundle\\Model\\SteamPlayer::STATE_OFFLINE') %}
+        {% set color = 'danger' %}
+        {% set icon = 'radio_button_unchecked' %}
+    {% elseif player.personaState == constant('AppBundle\\Model\\SteamPlayer::STATE_ONLINE') %}
+        {% set color = 'success' %}
+        {% set icon = 'radio_button_checked' %}
+    {% else %}
+        {% set color = 'warning' %}
+        {% set icon = 'radio_button_checked' %}
+    {% endif %}
+
+    <div class="card-body shadow-in-block">
+        <img class="img d-inline mr-3" src="{{ player.avatarMedium }}" alt="{{ player.personaName }}" />
+        <h4 class="d-inline">{{ player.personaName }}</h4>
+        <a href="{{ path('steam_player', {'steamId': player.steamId}) }}" class="btn btn-success btn-sm float-right"
+           title="{{ 'View profile'|trans }}">
+            {{ icon('person', '', 'font-size:2em;') }}
+        </a>
+    </div>
+
+{% endfor %}

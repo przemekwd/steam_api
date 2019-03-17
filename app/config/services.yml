@@ -28,3 +28,9 @@ services:
         resource: '../../src/AppBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
+
+    AppBundle\Twig\:
+        resource: '../../src/AppBundle/Twig/*'
+        public: true
+        tags: ['twig.extension']
+

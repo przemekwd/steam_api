@@ -36,7 +36,7 @@ class SteamConnector
      * @return  string
      * @throws  Exception
      */
-    public function get($url, array $options = [])
+    public function get(string $url, array $options = []): string
     {
         try {
             $response = $this->client->request('GET', $url, $options);

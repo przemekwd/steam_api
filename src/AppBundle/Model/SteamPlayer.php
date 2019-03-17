@@ -7,6 +7,14 @@ namespace AppBundle\Model;
  */
 class SteamPlayer
 {
+    const STATE_OFFLINE = 0;
+    const STATE_ONLINE = 1;
+    const STATE_BUSY = 2;
+    const STATE_AWAY = 3;
+    const STATE_SNOOZE = 4;
+    const STATE_LOOKING_TO_TRADE = 5;
+    const STATE_LOOKING_TO_PLAY = 6;
+
     /**
      * @var string|null
      */
@@ -96,10 +104,10 @@ class SteamPlayer
     }
 
     /**
-     * @param string $steamId
+     * @param string|null $steamId
      * @return SteamPlayer
      */
-    public function setSteamId(string $steamId): SteamPlayer
+    public function setSteamId(?string $steamId): SteamPlayer
     {
         $this->steamId = $steamId;
 
@@ -115,10 +123,10 @@ class SteamPlayer
     }
 
     /**
-     * @param int $communityVisibilityState
+     * @param int|null $communityVisibilityState
      * @return SteamPlayer
      */
-    public function setCommunityVisibilityState(int $communityVisibilityState): SteamPlayer
+    public function setCommunityVisibilityState(?int $communityVisibilityState): SteamPlayer
     {
         $this->communityVisibilityState = $communityVisibilityState;
 
@@ -134,10 +142,10 @@ class SteamPlayer
     }
 
     /**
-     * @param int $profileState
+     * @param int|null $profileState
      * @return SteamPlayer
      */
-    public function setProfileState(int $profileState): SteamPlayer
+    public function setProfileState(?int $profileState): SteamPlayer
     {
         $this->profileState = $profileState;
 
@@ -153,10 +161,10 @@ class SteamPlayer
     }
 
     /**
-     * @param int $lastLogOff
+     * @param int|null $lastLogOff
      * @return SteamPlayer
      */
-    public function setLastLogOff(int $lastLogOff): SteamPlayer
+    public function setLastLogOff(?int $lastLogOff): SteamPlayer
     {
         $this->lastLogOff = $lastLogOff;
 
@@ -172,10 +180,10 @@ class SteamPlayer
     }
 
     /**
-     * @param string $profileUrl
+     * @param string|null $profileUrl
      * @return SteamPlayer
      */
-    public function setProfileUrl(string $profileUrl): SteamPlayer
+    public function setProfileUrl(?string $profileUrl): SteamPlayer
     {
         $this->profileUrl = $profileUrl;
 
@@ -191,10 +199,10 @@ class SteamPlayer
     }
 
     /**
-     * @param string $avatar
+     * @param string|null $avatar
      * @return SteamPlayer
      */
-    public function setAvatar(string $avatar): SteamPlayer
+    public function setAvatar(?string $avatar): SteamPlayer
     {
         $this->avatar = $avatar;
 
@@ -210,10 +218,10 @@ class SteamPlayer
     }
 
     /**
-     * @param string $avatarMedium
+     * @param string|null $avatarMedium
      * @return SteamPlayer
      */
-    public function setAvatarMedium(string $avatarMedium): SteamPlayer
+    public function setAvatarMedium(?string $avatarMedium): SteamPlayer
     {
         $this->avatarMedium = $avatarMedium;
 
@@ -229,10 +237,10 @@ class SteamPlayer
     }
 
     /**
-     * @param string $avatarFull
+     * @param string|null $avatarFull
      * @return SteamPlayer
      */
-    public function setAvatarFull(string $avatarFull): SteamPlayer
+    public function setAvatarFull(?string $avatarFull): SteamPlayer
     {
         $this->avatarFull = $avatarFull;
 
@@ -248,10 +256,10 @@ class SteamPlayer
     }
 
     /**
-     * @param string $realName
+     * @param string|null $realName
      * @return SteamPlayer
      */
-    public function setRealName(string $realName): SteamPlayer
+    public function setRealName(?string $realName): SteamPlayer
     {
         $this->realName = $realName;
 
@@ -267,10 +275,10 @@ class SteamPlayer
     }
 
     /**
-     * @param string $primaryClanId
+     * @param string|null $primaryClanId
      * @return SteamPlayer
      */
-    public function setPrimaryClanId(string $primaryClanId): SteamPlayer
+    public function setPrimaryClanId(?string $primaryClanId): SteamPlayer
     {
         $this->primaryClanId = $primaryClanId;
 
@@ -286,10 +294,10 @@ class SteamPlayer
     }
 
     /**
-     * @param int $timeCreated
+     * @param int|null $timeCreated
      * @return SteamPlayer
      */
-    public function setTimeCreated(int $timeCreated): SteamPlayer
+    public function setTimeCreated(?int $timeCreated): SteamPlayer
     {
         $this->timeCreated = $timeCreated;
 
@@ -305,10 +313,10 @@ class SteamPlayer
     }
 
     /**
-     * @param string $locCountryCode
+     * @param string|null $locCountryCode
      * @return SteamPlayer
      */
-    public function setLocCountryCode(string $locCountryCode): SteamPlayer
+    public function setLocCountryCode(?string $locCountryCode): SteamPlayer
     {
         $this->locCountryCode = $locCountryCode;
 
@@ -324,10 +332,10 @@ class SteamPlayer
     }
 
     /**
-     * @param string $locStateCode
+     * @param string|null $locStateCode
      * @return SteamPlayer
      */
-    public function setLocStateCode(string $locStateCode): SteamPlayer
+    public function setLocStateCode(?string $locStateCode): SteamPlayer
     {
         $this->locStateCode = $locStateCode;
 
@@ -343,10 +351,10 @@ class SteamPlayer
     }
 
     /**
-     * @param string $personaName
+     * @param string|null $personaName
      * @return SteamPlayer
      */
-    public function setPersonaName(string $personaName): SteamPlayer
+    public function setPersonaName(?string $personaName): SteamPlayer
     {
         $this->personaName = $personaName;
 
@@ -362,10 +370,10 @@ class SteamPlayer
     }
 
     /**
-     * @param int $personaState
+     * @param int|null $personaState
      * @return SteamPlayer
      */
-    public function setPersonaState(int $personaState): SteamPlayer
+    public function setPersonaState(?int $personaState): SteamPlayer
     {
         $this->personaState = $personaState;
 
@@ -381,10 +389,10 @@ class SteamPlayer
     }
 
     /**
-     * @param int $personaStateFlags
+     * @param int|null $personaStateFlags
      * @return SteamPlayer
      */
-    public function setPersonaStateFlags(int $personaStateFlags): SteamPlayer
+    public function setPersonaStateFlags(?int $personaStateFlags): SteamPlayer
     {
         $this->personaStateFlags = $personaStateFlags;
 
